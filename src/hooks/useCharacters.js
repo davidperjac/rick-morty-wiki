@@ -8,13 +8,13 @@ export function useCharacters() {
 	const pageCtx = useContext(PageContext);
 	const page = pageCtx.state.value;
 
-	// useEffect(() => {
-	// 	fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
-	// 		.then((response) => response.json())
-	// 		.then((data) => setData(data.results));
-	// 	setLoading(false);
-	// 	window.scrollTo({ behavior: 'smooth', top: '0px' });
-	// }, [page]);
+	useEffect(() => {
+		fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
+			.then((response) => response.json())
+			.then((data) => setData(data.results));
+		setLoading(false);
+		window.scrollTo({ behavior: 'smooth', top: '0px' });
+	}, [page]);
 
 	return [data, loading];
 }
