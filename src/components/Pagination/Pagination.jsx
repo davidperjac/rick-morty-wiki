@@ -29,7 +29,7 @@ export const Pagination = ({ pageLimit, dataLimit }) => {
 		if (start === 40) {
 			return new Array(2).fill().map((_, idx) => start + idx + 1);
 		}
-		return new Array(width > 768 ? pageLimit : 5)
+		return new Array(width > 768 ? pageLimit : 4)
 			.fill()
 			.map((_, idx) => start + idx + 1);
 	};
