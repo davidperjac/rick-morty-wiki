@@ -1,0 +1,24 @@
+@import '../../globals.scss';
+
+.card {
+	height: 30rem;
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid $fourthColor;
+	border-radius: 10px 10px;
+	margin: 2.5rem;
+	box-shadow: 10px 10px $fourthColor;
+	&:hover {
+		transform: scale(1.02);
+		transition: translateY linear 0.3s;
+		transform: translateY(-7px);
+	}
+}
+
+.text {
+	margin-top: 0.5rem;
+	&:hover {
+		color: $thirdColor;
+	}
+}

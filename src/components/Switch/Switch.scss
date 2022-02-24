@@ -1,0 +1,10 @@
+@import '../../globals.scss';
+
+.switch {
+	transform: scale(2);
+	margin-top: 2.5rem;
+	cursor: pointer;
+	&:hover {
+		transition: all linear 0.3s;
+	}
+}
