@@ -17,21 +17,44 @@ export const Character = ({ character }) => {
 		fontSize: '20px',
 	};
 
+	const statusStyle = {
+		backgroundColor:
+			character.status === 'Alive'
+				? '#2eb086'
+				: character.status === 'unknown'
+				? '#313552'
+				: '#b8405e',
+		color: 'white',
+	};
+
+	const genderStyle = {
+		backgroundColor:
+			character.gender === 'Male'
+				? '#313552'
+				: character.gender === 'Unknown'
+				? '#313552'
+				: '#D82148',
+		color: 'white',
+	};
+
 	return (
 		<div className="card" style={darkStyle}>
+			<div className="gender" style={genderStyle}>
+				{character.gender}
+			</div>
+			<div className="status" style={statusStyle}>
+				{character.status}
+			</div>
 			<img
 				src={character.image}
 				alt={character.id}
-				style={{ borderRadius: '8px 8px 0 0' }}
+				style={{ borderRadius: '8px 8px 0 0', border: '1.5px solid #313552' }}
 				draggable="false"
 			></img>
 			<h2 className="text" style={darkTitle}>
 				{character.name}
 			</h2>
-			<span>
-				{character.status} - {character.species}
-			</span>
-			<span>{character.gender}</span>
+			<span>{character.species}</span>
 			<span>Last known location: {character.location.name}</span>
 		</div>
 	);

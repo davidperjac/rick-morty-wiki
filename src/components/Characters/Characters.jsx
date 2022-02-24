@@ -17,15 +17,15 @@ export const Characters = () => {
 	return (
 		<>
 			<div className="characters">
+				{filteredArray.length === 0 && (
+					<h1 style={{ color: 'red' }}>No results for {filter} :(</h1>
+				)}
 				{filteredArray.map((character, idx) => {
 					return (
 						<Character key={idx} character={character} loading={loading} />
 					);
 				})}
 			</div>
-			{filteredArray.length === 0 && loading && (
-				<h1 style={{ color: 'red' }}>No results for {filter} :(</h1>
-			)}
 		</>
 	);
 };

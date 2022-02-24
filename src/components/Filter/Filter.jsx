@@ -21,7 +21,7 @@ export const Filter = () => {
 		<input
 			className="filter"
 			spellCheck="false"
-			placeholder="Search..."
+			placeholder="Search for characters..."
 			style={darkStyles}
 			onChange={handleChange}
 			value={filterCtx.state.value}

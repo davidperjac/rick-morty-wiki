@@ -1,6 +1,7 @@
 import { Switch } from '../Switch/Switch';
 import { useContext } from 'react';
 import { ThemeContext } from '../../context/context';
+import './Header.scss';
 
 export const Header = () => {
 	const theme = useContext(ThemeContext);
@@ -13,7 +14,7 @@ export const Header = () => {
 
 	return (
 		<div className="header">
-			<h1 style={darkStyle}>Rick and Morty Wiki</h1>
+			<h1 style={darkStyle}>Rick & Morty Wiki</h1>
 			<Switch />
 		</div>
 	);
