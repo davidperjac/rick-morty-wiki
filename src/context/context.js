@@ -1,50 +1,36 @@
 import { createContext, useReducer } from 'react';
 
+import { pageReducer, filterReducer, themeReducer } from './reducers';
+import {
+	INITIAL_FILTER,
+	INITIAL_PAGE,
+	INITIAL_THEME,
+	INITIAL_EPISODE,
+	INITIAL_LOCATION,
+} from './states';
+
 export const ThemeContext = createContext();
 export const FilterContext = createContext();
 export const PageContext = createContext();
+export const EpisodeContext = createContext();
+export const LocationContext = createContext();
 
-const INITIAL_STATE = {
-	darkMode: new Date().getHours() > 18 || new Date().getHours() < 6,
+export const LocationProvider = (props) => {
+	const [state, dispatch] = useReducer(pageReducer, INITIAL_LOCATION);
+	return (
+		<LocationContext.Provider value={{ state, dispatch }}>
+			{props.children}
+		</LocationContext.Provider>
+	);
 };
 
-const INITIAL_FILTER = {
-	value: '',
-};
-
-const INITIAL_PAGE = {
-	value: 1,
-};
-
-const pageReducer = (state, action) => {
-	switch (action.type) {
-		case 'NEXT':
-			return { ...state, value: state.value + 1 };
-		case 'PREV':
-			return { ...state, value: state.value - 1 };
-		case 'CHANGE':
-			return { ...state, value: action.payload };
-		default:
-			return state;
-	}
-};
-
-const filterReducer = (state, action) => {
-	switch (action.type) {
-		case 'FILTER':
-			return { ...state, value: action.payload };
-		default:
-			return state;
-	}
-};
-
-const themeReducer = (state, action) => {
-	switch (action.type) {
-		case 'TOGGLE':
-			return { darkMode: !state.darkMode };
-		default:
-			return state;
-	}
+export const EpisodeProvider = (props) => {
+	const [state, dispatch] = useReducer(pageReducer, INITIAL_EPISODE);
+	return (
+		<EpisodeContext.Provider value={{ state, dispatch }}>
+			{props.children}
+		</EpisodeContext.Provider>
+	);
 };
 
 export const PageProvider = (props) => {
@@ -66,7 +52,7 @@ export const FilterProvider = (props) => {
 };
 
 export const ThemeProvider = (props) => {
-	const [state, dispatch] = useReducer(themeReducer, INITIAL_STATE);
+	const [state, dispatch] = useReducer(themeReducer, INITIAL_THEME);
 	return (
 		<ThemeContext.Provider value={{ state, dispatch }}>
 			{props.children}

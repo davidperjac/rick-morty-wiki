@@ -11,9 +11,8 @@
 	box-shadow: 10px 10px $fourthColor;
 	position: relative;
 	&:hover {
-		transform: scale(1.02);
-		transition: translateY linear 0.3s;
-		transform: translateY(-7px);
+		transition: translateY linear 0.2s;
+		transform: translateY(-10px);
 	}
 	.status {
 		font-weight: 800;

@@ -1,6 +1,6 @@
 import './Character.scss';
 import { useContext } from 'react';
-import { ThemeContext } from '../../context/context';
+import { ThemeContext} from '../../context/context';
 
 export const Character = ({ character }) => {
 	const theme = useContext(ThemeContext);

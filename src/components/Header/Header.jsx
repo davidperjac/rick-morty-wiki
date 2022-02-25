@@ -21,13 +21,13 @@ export const Header = () => {
 
 	return (
 		<div className="header">
-			<Link to="/" style={linkStyle}>
+			<Link to="/rick-morty-wiki" style={linkStyle}>
 				<h1 style={darkStyle}>Rick & Morty Wiki</h1>
 			</Link>
-			<Link to="/episodes" style={linkStyle}>
+			<Link to="/rick-morty-wiki/episodes" style={linkStyle}>
 				<h2 style={darkStyle}>Episodes</h2>
 			</Link>
-			<Link to="/locations" style={linkStyle}>
+			<Link to="/rick-morty-wiki/locations" style={linkStyle}>
 				<h2 style={darkStyle}>Locations</h2>
 			</Link>
 			<Switch />

@@ -4,9 +4,8 @@ import { ThemeContext } from './context/context';
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { Routes, Route } from 'react-router-dom';
 import { CharacterPage } from './components/CharacterPage/CharacterPage';
-import { LocationPage } from './components/LocationPage/LocationPage';
-import { EpisodePage } from './components/EpisodePage/EpisodePage';
-
+import { Episodes } from './components/Episodes/Episodes';
+import { Locations } from './components/Locations/Locations';
 import './App.scss';
 
 function App() {
@@ -29,9 +28,9 @@ function App() {
 			<Header />
 			<SearchBar />
 			<Routes>
-				<Route path="/" element={<CharacterPage />} />
-				<Route path="/episodes" element={<EpisodePage />} />
-				<Route path="/locations" element={<LocationPage />} />
+				<Route path="/rick-morty-wiki" element={<CharacterPage />} />
+				<Route path="/rick-morty-wiki/episodes" element={<Episodes />} />
+				<Route path="/rick-morty-wiki/locations" element={<Locations />} />
 			</Routes>
 			<h2 style={darkFont}>Powered by David Perez</h2>
 		</div>

@@ -3,9 +3,9 @@ import { useContext, useState } from 'react';
 import { PageContext } from '../../context/context';
 
 export const Pagination = ({ pageLimit, dataLimit }) => {
-	const [pages] = useState(Math.round(826 / dataLimit));
-	const [currentPage, setCurrentPage] = useState(1);
 	const page = useContext(PageContext);
+	const [pages] = useState(Math.round(826 / dataLimit));
+	const [currentPage, setCurrentPage] = useState(page.state.value);
 	const width = window.innerWidth;
 
 	function goToNextPage() {

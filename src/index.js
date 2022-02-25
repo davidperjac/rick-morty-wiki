@@ -3,18 +3,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-
-import { FilterProvider, PageProvider, ThemeProvider } from './context/context';
+import { Provider } from './context/Provider';
 
 ReactDOM.render(
 	<BrowserRouter>
-		<PageProvider>
-			<FilterProvider>
-				<ThemeProvider>
-					<App />
-				</ThemeProvider>
-			</FilterProvider>
-		</PageProvider>
+		<Provider>
+			<App />
+		</Provider>
 	</BrowserRouter>,
 	document.getElementById('root')
 );

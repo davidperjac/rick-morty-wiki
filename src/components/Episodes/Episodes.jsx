@@ -1,13 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
-import { FilterContext } from '../../context/context';
+import { FilterContext, EpisodeContext } from '../../context/context';
 
 import { useData } from '../../hooks/useData';
-import './Episode.scss';
+import './Episodes.scss';
 
-export const Episode = () => {
-	const [id, setID] = useState(1);
+export const Episodes = () => {
+	const episodesCtx = useContext(EpisodeContext);
+	const id = episodesCtx.state.value;
+
 	const [episode] = useData('https://rickandmortyapi.com/api/episode/' + id);
 
 	const theme = useContext(ThemeContext);
@@ -44,31 +46,38 @@ export const Episode = () => {
 		color: darkMode ? '#2eb086' : '#313552',
 	};
 
+	const changeEpisode = (event) => {
+		episodesCtx.dispatch({ type: 'CHANGE', payload: event.target.value });
+	};
+
 	return (
-		<div>
-			<div className="episode" style={darkStyles}>
-				<h1>{episode.name}</h1>
-				<h2>{episode.air_date}</h2>
-				<h3>{episode.episode}</h3>
-				<select
-					style={darkSelect}
-					onChange={(e) => setID(e.target.value)}
-					className="form-select"
-					id={episode.name}
-				>
-					<option value="1">Choose...</option>
-					{[...Array(51).keys()].map((x, index) => {
-						return <option value={x + 1}>Episode - {x + 1}</option>;
-					})}
-				</select>
-				<div className="characters">
-					{filteredArray.length === 0 && (
-						<h2 style={{ color: '#b8405e' }}>No results for {filter} </h2>
-					)}
-					{filteredArray.map((character, idx) => {
-						return <Character key={idx} character={character} />;
-					})}
-				</div>
+		<div className="episode" style={darkStyles}>
+			<h1>{episode.name}</h1>
+			<h2>{episode.air_date}</h2>
+			<h3>{episode.episode}</h3>
+			<select
+				style={darkSelect}
+				onChange={changeEpisode}
+				className="form-select"
+				id={episode.name}
+				defaultValue={id}
+			>
+				<option value="1">Choose...</option>
+				{[...Array(51).keys()].map((x, index) => {
+					return (
+						<option value={x + 1} key={index}>
+							Episode - {x + 1}
+						</option>
+					);
+				})}
+			</select>
+			<div className="characters">
+				{filteredArray.length === 0 && (
+					<h2 style={{ color: '#b8405e' }}>No results for {filter} </h2>
+				)}
+				{filteredArray.map((character, idx) => {
+					return <Character key={idx} character={character} />;
+				})}
 			</div>
 		</div>
 	);
