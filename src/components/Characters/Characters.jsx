@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { useCharacters } from '../../hooks/useCharacters';
+import { useData } from '../../hooks/useData';
 import { Character } from '../Character/Character';
 import { FilterContext } from '../../context/context';
 import './Characters.scss';
 
 export const Characters = () => {
-	const [characters, loading] = useCharacters();
+	const [characters] = useData('https://rickandmortyapi.com/api/character');
 
 	const filterCtx = useContext(FilterContext);
 	const filter = filterCtx.state.value;
@@ -18,12 +18,10 @@ export const Characters = () => {
 		<>
 			<div className="characters">
 				{filteredArray.length === 0 && (
-					<h1 style={{ color: 'red' }}>No results for {filter} :(</h1>
+					<h2 style={{ color: '#b8405e' }}>No results for {filter}</h2>
 				)}
 				{filteredArray.map((character, idx) => {
-					return (
-						<Character key={idx} character={character} loading={loading} />
-					);
+					return <Character key={idx} character={character} />;
 				})}
 			</div>
 		</>

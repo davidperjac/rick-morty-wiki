@@ -1,0 +1,22 @@
+@import '../../globals.scss';
+.search-bar {
+	.icon {
+		transform: scale(2);
+		padding-left: 2rem;
+	}
+	.filter {
+		margin: 5rem;
+		width: 30rem;
+		height: 2rem;
+		border-radius: 10px;
+		background: none;
+		outline: none;
+		padding-left: 1rem;
+		font-size: 20px;
+		letter-spacing: 1px;
+		align-self: center;
+		@include mobile {
+			width: 20rem;
+		}
+	}
+}

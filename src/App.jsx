@@ -1,9 +1,12 @@
 import { useContext } from 'react';
-import { Characters } from './components/Characters/Characters';
 import { Header } from './components/Header/Header';
 import { ThemeContext } from './context/context';
-import { Filter } from './components/Filter/Filter';
-import { Pagination } from './components/Pagination/Pagination';
+import { SearchBar } from './components/SearchBar/SearchBar';
+import { Routes, Route } from 'react-router-dom';
+import { CharacterPage } from './components/CharacterPage/CharacterPage';
+import { LocationPage } from './components/LocationPage/LocationPage';
+import { EpisodePage } from './components/EpisodePage/EpisodePage';
+
 import './App.scss';
 
 function App() {
@@ -18,15 +21,18 @@ function App() {
 	const darkFont = {
 		color: darkMode ? '#2eb086' : '#313552',
 		transition: 'linear 0.3s',
-		paddingBottom: '2rem',
+		padding: '5rem',
 	};
 
 	return (
 		<div className="App" style={darkStyle}>
 			<Header />
-			<Filter />
-			<Characters />
-			<Pagination pageLimit={10} dataLimit={20} />
+			<SearchBar />
+			<Routes>
+				<Route path="/" element={<CharacterPage />} />
+				<Route path="/episodes" element={<EpisodePage />} />
+				<Route path="/locations" element={<LocationPage />} />
+			</Routes>
 			<h2 style={darkFont}>Powered by David Perez</h2>
 		</div>
 	);

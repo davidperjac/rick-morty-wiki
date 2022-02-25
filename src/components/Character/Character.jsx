@@ -37,8 +37,17 @@ export const Character = ({ character }) => {
 		color: 'white',
 	};
 
+	const idStyle = {
+		backgroundColor: darkMode ? 'white' : '#313552',
+		color: darkMode ? 'black' : 'white',
+		transition: '0.5s linear',
+	};
+
 	return (
 		<div className="card" style={darkStyle}>
+			<div className="id" style={idStyle}>
+				{character.id}
+			</div>
 			<div className="gender" style={genderStyle}>
 				{character.gender}
 			</div>
@@ -48,7 +57,10 @@ export const Character = ({ character }) => {
 			<img
 				src={character.image}
 				alt={character.id}
-				style={{ borderRadius: '8px 8px 0 0', border: '1.5px solid #313552' }}
+				style={{
+					borderRadius: '8px 8px 0 0',
+					border: '1.5px 1.5px 0 0 solid #313552',
+				}}
 				draggable="false"
 			></img>
 			<h2 className="text" style={darkTitle}>

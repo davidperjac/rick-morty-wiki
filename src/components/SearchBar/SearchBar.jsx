@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import './Filter.scss';
+import './SearchBar.scss';
 import { ThemeContext, FilterContext } from '../../context/context';
+import { BsSearch } from 'react-icons/bs';
 
-export const Filter = () => {
+export const SearchBar = () => {
 	const filterCtx = useContext(FilterContext);
 
 	const theme = useContext(ThemeContext);
@@ -13,18 +14,25 @@ export const Filter = () => {
 		color: darkMode ? '#2eb086' : '#313552',
 	};
 
+	const darkIcon = {
+		color: darkMode ? '#2eb086' : '#313552',
+	};
+
 	const handleChange = (event) => {
 		filterCtx.dispatch({ type: 'FILTER', payload: event.target.value });
 	};
 
 	return (
-		<input
-			className="filter"
-			spellCheck="false"
-			placeholder="Search for characters..."
-			style={darkStyles}
-			onChange={handleChange}
-			value={filterCtx.state.value}
-		></input>
+		<div className="search-bar">
+			<BsSearch className="icon" style={darkIcon} />
+			<input
+				className="filter"
+				spellCheck="false"
+				placeholder=" Search for characters..."
+				style={darkStyles}
+				onChange={handleChange}
+				value={filterCtx.state.value}
+			></input>
+		</div>
 	);
 };

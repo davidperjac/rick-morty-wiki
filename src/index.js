@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
 import { FilterProvider, PageProvider, ThemeProvider } from './context/context';
 
 ReactDOM.render(
-	<React.StrictMode>
+	<BrowserRouter>
 		<PageProvider>
 			<FilterProvider>
 				<ThemeProvider>
@@ -14,6 +15,6 @@ ReactDOM.render(
 				</ThemeProvider>
 			</FilterProvider>
 		</PageProvider>
-	</React.StrictMode>,
+	</BrowserRouter>,
 	document.getElementById('root')
 );
