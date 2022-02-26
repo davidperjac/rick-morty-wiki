@@ -32,7 +32,7 @@ export const SearchBar = () => {
 
 	return (
 		<div className="search-bar">
-			<BsSearch className="icon" style={darkIcon} />
+			<BsSearch size={32} className="icon" style={darkIcon} />
 			<input
 				className="filter"
 				spellCheck="false"

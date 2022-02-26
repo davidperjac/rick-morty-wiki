@@ -1,14 +1,14 @@
 @import '../../globals.scss';
 .search-bar {
+	align-self: center;
 	.icon {
-		transform: scale(2);
-		padding-left: 2rem;
+		margin-right: 1rem;
 		@include mobile {
 			display: none;
 		}
 	}
 	.filter {
-		margin: 5rem;
+		margin-top: 5rem;
 		width: 30rem;
 		height: 2rem;
 		border-radius: 10px;
@@ -19,7 +19,7 @@
 		letter-spacing: 1px;
 		align-self: center;
 		@include mobile {
-			width: 20rem;
+			width: 15rem;
 		}
 	}
 }
