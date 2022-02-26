@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef, useCallback } from 'react';
 import './SearchBar.scss';
 import {
 	ThemeContext,
@@ -14,6 +14,8 @@ export const SearchBar = () => {
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
 
+	const searchInput = useRef(null);
+
 	const darkStyles = {
 		border: `2px solid  ${darkMode ? '#2eb086' : '#313552'}`,
 		color: darkMode ? '#2eb086' : '#313552',
@@ -23,10 +25,10 @@ export const SearchBar = () => {
 		color: darkMode ? '#2eb086' : '#313552',
 	};
 
-	const handleChange = (event) => {
-		filterCtx.dispatch({ type: 'FILTER', payload: event.target.value });
+	const handleChange = useCallback(() => {
+		filterCtx.dispatch({ type: 'FILTER', payload: searchInput.current.value });
 		pageCtx.dispatch({ type: 'CHANGE_PAGE', payload: 1 });
-	};
+	}, [filterCtx, pageCtx]);
 
 	return (
 		<div className="search-bar">
@@ -37,7 +39,7 @@ export const SearchBar = () => {
 				placeholder=" Search for characters..."
 				style={darkStyles}
 				onChange={handleChange}
-				value={filterCtx.state.value}
+				ref={searchInput}
 			></input>
 		</div>
 	);

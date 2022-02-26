@@ -30,7 +30,7 @@ function App() {
 				<Route path="/rick-morty-wiki/episodes" element={<Episodes />} />
 				<Route path="/rick-morty-wiki/locations" element={<Locations />} />
 			</Routes>
-			<h2 style={darkFont}>Powered by David Perez</h2>
+			<h2 style={darkFont}>Te amo, perdon por reirme ❤️</h2>
 		</div>
 	);
 }

@@ -1,8 +1,7 @@
 @import '../../globals.scss';
 
 .switch {
-	transform: scale(2);
-	margin-top: 2.5rem;
+	padding-top: 1.3rem;
 	cursor: pointer;
 	&:hover {
 		transition: all linear 0.3s;

@@ -21,14 +21,18 @@ export const Characters = () => {
 
 	return (
 		<>
-			{!characters.error && (
-				<h2 style={darkStyle}>Available: {count} characters </h2>
+			{characters.error ? (
+				<h2 style={darkStyle}>No characters found</h2>
+			) : (
+				<>
+					<h2 style={darkStyle}>Available: {count} characters </h2>
+					<div className="characters">
+						{characters.map((character, idx) => {
+							return <Character key={idx} character={character} />;
+						})}
+					</div>
+				</>
 			)}
-			<div className="characters">
-				{characters.map((character, idx) => {
-					return <Character key={idx} character={character} />;
-				})}
-			</div>
 		</>
 	);
 };

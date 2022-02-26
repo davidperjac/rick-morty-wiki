@@ -19,7 +19,7 @@ export const Switch = () => {
 
 	return (
 		<div onClick={handleClick} className="switch" style={darkStyle}>
-			{!darkMode ? <FaSun /> : <MdDarkMode />}
+			{!darkMode ? <FaSun size={32} /> : <MdDarkMode size={32} />}
 		</div>
 	);
 };
