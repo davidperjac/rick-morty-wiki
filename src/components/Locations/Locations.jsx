@@ -74,7 +74,7 @@ export const Locations = () => {
 				})}
 			</select>
 			<div className="characters">
-				{!loading
+				{loading
 					? loadingArray.map((idx) => {
 							return <CharacterLoading />;
 					  })

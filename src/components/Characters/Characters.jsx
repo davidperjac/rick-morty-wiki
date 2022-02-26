@@ -26,6 +26,7 @@ export const Characters = () => {
 	const loadingArray = new Array(20).fill().map((_, idx) => idx + 1);
 
 	return (
+		
 		<>
 			{!characters.error && (
 				<h2 style={darkStyle}>Available: {count} characters </h2>
