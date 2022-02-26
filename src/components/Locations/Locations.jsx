@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
-import { CharacterLoading } from '../Characters/CharacterLoading';
 
 import { useData } from '../../hooks/useData';
 
@@ -15,11 +14,7 @@ export const Locations = () => {
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
 
-	const [location, loading] = useData(
-		'https://rickandmortyapi.com/api/location/' + id
-	);
-
-	const loadingArray = new Array(20).fill().map((_, idx) => idx + 1);
+	const [location] = useData('https://rickandmortyapi.com/api/location/' + id);
 
 	useEffect(() => {
 		(async function () {
@@ -74,13 +69,9 @@ export const Locations = () => {
 				})}
 			</select>
 			<div className="characters">
-				{loading
-					? loadingArray.map((idx) => {
-							return <CharacterLoading />;
-					  })
-					: residents.map((resident, idx) => {
-							return <Character key={idx} character={resident} />;
-					  })}
+				{residents.map((resident, idx) => {
+					return <Character key={idx} character={resident} />;
+				})}
 			</div>
 		</div>
 	);
