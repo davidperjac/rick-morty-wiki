@@ -3,6 +3,9 @@
 	.icon {
 		transform: scale(2);
 		padding-left: 2rem;
+		@include mobile {
+			display: none;
+		}
 	}
 	.filter {
 		margin: 5rem;

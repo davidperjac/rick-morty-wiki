@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Header } from './components/Header/Header';
 import { ThemeContext } from './context/context';
-import { SearchBar } from './components/SearchBar/SearchBar';
 import { Routes, Route } from 'react-router-dom';
 import { CharacterPage } from './components/CharacterPage/CharacterPage';
 import { Episodes } from './components/Episodes/Episodes';
@@ -26,7 +25,6 @@ function App() {
 	return (
 		<div className="App" style={darkStyle}>
 			<Header />
-			<SearchBar />
 			<Routes>
 				<Route path="/rick-morty-wiki" element={<CharacterPage />} />
 				<Route path="/rick-morty-wiki/episodes" element={<Episodes />} />

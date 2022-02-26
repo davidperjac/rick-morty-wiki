@@ -1,42 +1,38 @@
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
-import { FilterContext, LocationContext } from '../../context/context';
+import { SelectContext } from '../../context/context';
 
 import { useData } from '../../hooks/useData';
 
 export const Locations = () => {
-	const locationCtx = useContext(LocationContext);
-	const id = locationCtx.state.value;
-	const [location] = useData('https://rickandmortyapi.com/api/location/' + id);
+	const [residents, setResidents] = useState([]);
+
+	const locationCtx = useContext(SelectContext);
+	const id = locationCtx.state.location;
 
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
-	const [residents, setResidents] = useState([]);
 
-	const filterCtx = useContext(FilterContext);
-	const filter = filterCtx.state.value;
+	const [location] = useData('https://rickandmortyapi.com/api/location/' + id);
 
 	useEffect(() => {
-		if (location) {
-			(async function () {
+		(async function () {
+			if (location.residents) {
 				let a = await Promise.all(
 					location.residents.map((x) => {
 						return fetch(x).then((res) => res.json());
 					})
 				);
 				setResidents(a);
-			})();
-		}
+			}
+		})();
 	}, [location]);
 
-	const filteredArray = residents.filter((resident) => {
-		return resident.name.toLowerCase().includes(filter.toLowerCase());
-	});
-
 	const darkStyles = {
-		color: darkMode ? '#eee6ce' : '#313552',
+		color: darkMode ? '#2eb086' : '#313552',
 		transition: '0.5s linear',
+		margin: '6rem',
 	};
 
 	const darkSelect = {
@@ -45,7 +41,10 @@ export const Locations = () => {
 	};
 
 	const changeLocation = (event) => {
-		locationCtx.dispatch({ type: 'CHANGE', payload: event.target.value });
+		locationCtx.dispatch({
+			type: 'CHANGE_LOCATION',
+			payload: event.target.value,
+		});
 	};
 
 	return (
@@ -70,10 +69,7 @@ export const Locations = () => {
 				})}
 			</select>
 			<div className="characters">
-				{filteredArray.length === 0 && (
-					<h2 style={{ color: '#b8405e' }}>No results for {filter} </h2>
-				)}
-				{filteredArray.map((resident, idx) => {
+				{residents.map((resident, idx) => {
 					return <Character key={idx} character={resident} />;
 				})}
 			</div>

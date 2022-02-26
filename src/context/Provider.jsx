@@ -1,21 +1,18 @@
 import {
 	FilterProvider,
-	PageProvider,
+	InfoProvider,
 	ThemeProvider,
-	EpisodeProvider,
-	LocationProvider,
+	SelectProvider,
 } from './context';
 
 export const Provider = ({ children }) => {
 	return (
-		<EpisodeProvider>
-			<LocationProvider>
-				<PageProvider>
-					<FilterProvider>
-						<ThemeProvider>{children}</ThemeProvider>
-					</FilterProvider>
-				</PageProvider>
-			</LocationProvider>
-		</EpisodeProvider>
+		<SelectProvider>
+			<FilterProvider>
+				<InfoProvider>
+					<ThemeProvider>{children}</ThemeProvider>
+				</InfoProvider>
+			</FilterProvider>
+		</SelectProvider>
 	);
 };

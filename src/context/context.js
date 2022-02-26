@@ -1,44 +1,38 @@
 import { createContext, useReducer } from 'react';
 
-import { pageReducer, filterReducer, themeReducer } from './reducers';
+import {
+	filterReducer,
+	themeReducer,
+	infoReducer,
+	selectReducer,
+} from './reducers';
 import {
 	INITIAL_FILTER,
-	INITIAL_PAGE,
 	INITIAL_THEME,
-	INITIAL_EPISODE,
-	INITIAL_LOCATION,
+	INITIAL_SELECT,
+	INITIAL_INFO,
 } from './states';
 
 export const ThemeContext = createContext();
 export const FilterContext = createContext();
-export const PageContext = createContext();
-export const EpisodeContext = createContext();
-export const LocationContext = createContext();
+export const SelectContext = createContext();
+export const InfoContext = createContext();
 
-export const LocationProvider = (props) => {
-	const [state, dispatch] = useReducer(pageReducer, INITIAL_LOCATION);
+export const InfoProvider = (props) => {
+	const [state, dispatch] = useReducer(infoReducer, INITIAL_INFO);
 	return (
-		<LocationContext.Provider value={{ state, dispatch }}>
+		<InfoContext.Provider value={{ state, dispatch }}>
 			{props.children}
-		</LocationContext.Provider>
+		</InfoContext.Provider>
 	);
 };
 
-export const EpisodeProvider = (props) => {
-	const [state, dispatch] = useReducer(pageReducer, INITIAL_EPISODE);
+export const SelectProvider = (props) => {
+	const [state, dispatch] = useReducer(selectReducer, INITIAL_SELECT);
 	return (
-		<EpisodeContext.Provider value={{ state, dispatch }}>
+		<SelectContext.Provider value={{ state, dispatch }}>
 			{props.children}
-		</EpisodeContext.Provider>
-	);
-};
-
-export const PageProvider = (props) => {
-	const [state, dispatch] = useReducer(pageReducer, INITIAL_PAGE);
-	return (
-		<PageContext.Provider value={{ state, dispatch }}>
-			{props.children}
-		</PageContext.Provider>
+		</SelectContext.Provider>
 	);
 };
 

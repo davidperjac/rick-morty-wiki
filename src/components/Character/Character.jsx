@@ -1,6 +1,6 @@
 import './Character.scss';
 import { useContext } from 'react';
-import { ThemeContext} from '../../context/context';
+import { ThemeContext } from '../../context/context';
 
 export const Character = ({ character }) => {
 	const theme = useContext(ThemeContext);
@@ -8,7 +8,7 @@ export const Character = ({ character }) => {
 
 	const darkStyle = {
 		border: darkMode ? '2px solid #2eb086' : '2px solid #313552',
-		boxShadow: !darkMode && '10px 10px #313552',
+		boxShadow: darkMode ? '10px 0px #2eb086' : '10px 0px #313552',
 		transition: '0.3s linear',
 		color: darkMode ? 'white' : 'black',
 	};

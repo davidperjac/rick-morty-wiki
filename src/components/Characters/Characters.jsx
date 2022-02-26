@@ -1,28 +1,38 @@
-import { useContext } from 'react';
 import { useData } from '../../hooks/useData';
 import { Character } from '../Character/Character';
-import { FilterContext } from '../../context/context';
+import { useContext } from 'react';
+import { InfoContext, ThemeContext } from '../../context/context';
 import './Characters.scss';
 
 export const Characters = () => {
-	const [characters] = useData('https://rickandmortyapi.com/api/character');
+	const infoCtx = useContext(InfoContext);
+	const { count } = infoCtx.state;
 
-	const filterCtx = useContext(FilterContext);
-	const filter = filterCtx.state.value;
+	const theme = useContext(ThemeContext);
+	const darkMode = theme.state.darkMode;
 
-	const filteredArray = characters.filter((character) => {
-		return character.name.toLowerCase().includes(filter.toLowerCase());
-	});
+	const [characters,loading] = useData('https://rickandmortyapi.com/api/character');
+
+	console.log(loading);
+
+	const darkStyle = {
+		color: darkMode ? '#2eb086' : '#313552',
+		transition: '0.5s linear',
+	};
 
 	return (
 		<>
+			{!characters.error && (
+				<h2 style={darkStyle}>Available: {count} characters </h2>
+			)}
 			<div className="characters">
-				{filteredArray.length === 0 && (
-					<h2 style={{ color: '#b8405e' }}>No results for {filter}</h2>
+				{characters.error ? (
+					<h2 style={darkStyle}>No characters found</h2>
+				) : (
+					characters.map((character, idx) => {
+						return <Character key={idx} character={character} />;
+					})
 				)}
-				{filteredArray.map((character, idx) => {
-					return <Character key={idx} character={character} />;
-				})}
 			</div>
 		</>
 	);

@@ -1,37 +1,36 @@
 import './Pagination.scss';
-import { useContext, useState } from 'react';
-import { PageContext } from '../../context/context';
+import { useContext } from 'react';
+import { InfoContext, SelectContext } from '../../context/context';
 
-export const Pagination = ({ pageLimit, dataLimit }) => {
-	const page = useContext(PageContext);
-	const [pages] = useState(Math.round(826 / dataLimit));
-	const [currentPage, setCurrentPage] = useState(page.state.value);
+//characters : 826
+
+export const Pagination = ({ pageLimit }) => {
+	const page = useContext(SelectContext);
+	const currentPage = page.state.page;
+
+	const infoCtx = useContext(InfoContext);
+	const { pages } = infoCtx.state;
+
 	const width = window.innerWidth;
 
 	function goToNextPage() {
-		page.dispatch({ type: 'NEXT' });
-		setCurrentPage((page) => page + 1);
+		page.dispatch({ type: 'NEXT_PAGE' });
 	}
 
 	function goToPreviousPage() {
-		page.dispatch({ type: 'PREV' });
-		setCurrentPage((page) => page - 1);
+		page.dispatch({ type: 'PREV_PAGE' });
 	}
 
 	function changePage(event) {
 		const pageNumber = Number(event.target.textContent);
-		page.dispatch({ type: 'CHANGE', payload: pageNumber });
-		setCurrentPage(pageNumber);
+		page.dispatch({ type: 'CHANGE_PAGE', payload: pageNumber });
 	}
 
 	const getPaginationGroup = () => {
 		let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-		if (start === 40) {
-			return new Array(2).fill().map((_, idx) => start + idx + 1);
-		}
-		return new Array(width > 768 ? pageLimit : 4)
-			.fill()
-			.map((_, idx) => start + idx + 1);
+		const size =
+			pages - start < 10 ? pages - start : width > 768 ? pageLimit : 4;
+		return new Array(size).fill().map((_, idx) => start + idx + 1);
 	};
 
 	return (
@@ -54,7 +53,7 @@ export const Pagination = ({ pageLimit, dataLimit }) => {
 			))}
 			<button
 				onClick={goToNextPage}
-				className={`next ${currentPage === pages + 1 ? 'disabled' : ''}`}
+				className={`next ${currentPage === pages ? 'disabled' : ''}`}
 			>
 				next
 			</button>
