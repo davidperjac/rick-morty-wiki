@@ -1,10 +1,15 @@
 import { useContext } from 'react';
 import './SearchBar.scss';
-import { ThemeContext, FilterContext } from '../../context/context';
+import {
+	ThemeContext,
+	FilterContext,
+	SelectContext,
+} from '../../context/context';
 import { BsSearch } from 'react-icons/bs';
 
 export const SearchBar = () => {
 	const filterCtx = useContext(FilterContext);
+	const pageCtx = useContext(SelectContext);
 
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
@@ -20,6 +25,7 @@ export const SearchBar = () => {
 
 	const handleChange = (event) => {
 		filterCtx.dispatch({ type: 'FILTER', payload: event.target.value });
+		pageCtx.dispatch({ type: 'CHANGE_PAGE', payload: 1 });
 	};
 
 	return (

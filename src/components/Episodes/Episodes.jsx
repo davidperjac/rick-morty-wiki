@@ -1,10 +1,12 @@
+import './Episodes.scss';
+
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
+import { CharacterLoading } from '../Characters/CharacterLoading';
 
 import { useData } from '../../hooks/useData';
-import './Episodes.scss';
 
 export const Episodes = () => {
 	const [characters, setCharacters] = useState([]);
@@ -15,7 +17,11 @@ export const Episodes = () => {
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
 
-	const [episode] = useData('https://rickandmortyapi.com/api/episode/' + id);
+	const [episode, loading] = useData(
+		'https://rickandmortyapi.com/api/episode/' + id
+	);
+
+	const loadingArray = new Array(20).fill().map((_, idx) => idx + 1);
 
 	useEffect(() => {
 		(async function () {
@@ -70,9 +76,13 @@ export const Episodes = () => {
 				})}
 			</select>
 			<div className="characters">
-				{characters.map((character, idx) => {
-					return <Character key={idx} character={character} />;
-				})}
+				{loading
+					? loadingArray.map((idx) => {
+							return <CharacterLoading />;
+					  })
+					: characters.map((character, idx) => {
+							return <Character key={idx} character={character} />;
+					  })}
 			</div>
 		</div>
 	);

@@ -1,0 +1,28 @@
+@import '../../globals.scss';
+.card-loading {
+	height: 29rem;
+	width: 20rem;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid $fourthColor;
+	border-radius: 10px 10px;
+	margin: 2.5rem;
+	position: relative;
+	color: white;
+	justify-content: center;
+	background: linear-gradient(90deg, rgba(49, 53, 82, 1), rgb(53, 56, 92));
+	background-size: 400% 400%;
+	animation: loadingAnimation 0.5s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
