@@ -33,6 +33,8 @@ export const Locations = () => {
 		color: darkMode ? '#2eb086' : '#313552',
 		transition: '0.5s linear',
 		margin: '6rem',
+		display: 'flex',
+		flexDirection: 'column',
 	};
 
 	const darkSelect = {

@@ -29,7 +29,11 @@ export const Pagination = ({ pageLimit }) => {
 	const getPaginationGroup = () => {
 		let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
 		const size =
-			pages - start < pageLimit ? pages - start : width > 768 ? pageLimit : 3;
+			pages - start < pageLimit && width > 768
+				? pages - start
+				: width > 768
+				? pageLimit
+				: 3;
 		return new Array(size).fill().map((_, idx) => start + idx + 1);
 	};
 
