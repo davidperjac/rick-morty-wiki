@@ -43,6 +43,11 @@ export const Character = ({ character }) => {
 		transition: '0.5s linear',
 	};
 
+	const darkBorder = {
+		borderRadius: '8px 8px 0 0',
+		borderBottom: darkMode ? '4px solid #2eb086' : '4px solid #313552',
+	};
+
 	return (
 		<div className="card" style={darkStyle}>
 			<div className="id" style={idStyle}>
@@ -57,10 +62,7 @@ export const Character = ({ character }) => {
 			<img
 				src={character.image}
 				alt={character.id}
-				style={{
-					borderRadius: '8px 8px 0 0',
-					border: '1.5px 1.5px 0 0 solid #313552',
-				}}
+				style={darkBorder}
 				draggable="false"
 			></img>
 			<h2 className="text" style={darkTitle}>

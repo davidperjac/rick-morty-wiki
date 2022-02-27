@@ -6,6 +6,7 @@ import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
 
 import { useData } from '../../hooks/useData';
+import { Select } from '../Select/Select';
 
 export const Episodes = () => {
 	const [characters, setCharacters] = useState([]);
@@ -37,9 +38,9 @@ export const Episodes = () => {
 		margin: '6rem',
 	};
 
-	const darkSelect = {
+	const darkInfo = {
 		border: `2px solid  ${darkMode ? '#2eb086' : '#313552'}`,
-		color: darkMode ? '#2eb086' : '#313552',
+		boxShadow: darkMode ? '10px 0px #2eb086' : '10px 0px #313552',
 	};
 
 	const changeEpisode = (event) => {
@@ -51,25 +52,18 @@ export const Episodes = () => {
 
 	return (
 		<div className="episode" style={darkStyles}>
-			<h1>{episode.name}</h1>
-			<h2>{episode.air_date}</h2>
-			<h3>{episode.episode}</h3>
-			<select
-				style={darkSelect}
-				onChange={changeEpisode}
-				className="form-select"
-				id={episode.name}
-				defaultValue={id}
-			>
-				<option value="1">Choose...</option>
-				{[...Array(51).keys()].map((x, index) => {
-					return (
-						<option value={x + 1} key={index}>
-							Episode - {x + 1}
-						</option>
-					);
-				})}
-			</select>
+			<div className="info" style={darkInfo}>
+				<h1>{episode.name}</h1>
+				<h2>{episode.air_date}</h2>
+				<h3>{episode.episode}</h3>
+				<Select
+					change={changeEpisode}
+					data={episode}
+					id={id}
+					name="Episode"
+					total={51}
+				/>
+			</div>
 			<div className="characters">
 				{characters.map((character, idx) => {
 					return <Character key={idx} character={character} />;

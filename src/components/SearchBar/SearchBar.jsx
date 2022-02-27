@@ -1,11 +1,11 @@
-import { useContext, useRef, useCallback } from 'react';
 import './SearchBar.scss';
+import { useContext, useRef, useCallback } from 'react';
+import { BsSearch } from 'react-icons/bs';
 import {
 	ThemeContext,
 	FilterContext,
 	SelectContext,
 } from '../../context/context';
-import { BsSearch } from 'react-icons/bs';
 
 export const SearchBar = () => {
 	const filterCtx = useContext(FilterContext);

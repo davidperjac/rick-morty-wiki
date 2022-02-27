@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
+import './Locations.scss';
 
 import { useData } from '../../hooks/useData';
+import { Select } from '../Select/Select';
 
 export const Locations = () => {
 	const [residents, setResidents] = useState([]);
@@ -37,9 +39,9 @@ export const Locations = () => {
 		flexDirection: 'column',
 	};
 
-	const darkSelect = {
+	const darkInfo = {
 		border: `2px solid  ${darkMode ? '#2eb086' : '#313552'}`,
-		color: darkMode ? '#2eb086' : '#313552',
+		boxShadow: darkMode ? '10px 0px #2eb086' : '10px 0px #313552',
 	};
 
 	const changeLocation = (event) => {
@@ -51,25 +53,18 @@ export const Locations = () => {
 
 	return (
 		<div className="location" style={darkStyles}>
-			<h1>{location.name}</h1>
-			<h2>{location.type}</h2>
-			<h3>{location.dimension}</h3>
-			<select
-				style={darkSelect}
-				onChange={changeLocation}
-				className="form-select"
-				id={location.name}
-				defaultValue={id}
-			>
-				<option value="1">Choose...</option>
-				{[...Array(126).keys()].map((x, index) => {
-					return (
-						<option value={x + 1} key={index}>
-							Location - {x + 1}
-						</option>
-					);
-				})}
-			</select>
+			<div className="info" style={darkInfo}>
+				<h1>{location.name}</h1>
+				<h2>{location.type}</h2>
+				<h3>{location.dimension}</h3>
+				<Select
+					change={changeLocation}
+					data={location}
+					id={id}
+					name="Location"
+					total={126}
+				/>
+			</div>
 			<div className="characters">
 				{residents.map((resident, idx) => {
 					return <Character key={idx} character={resident} />;

@@ -2,6 +2,18 @@
 .episode {
 	display: flex;
 	flex-direction: column;
+	.info {
+		display: flex;
+		flex-direction: column;
+		align-self: center;
+		border: 3px solid $fourthColor;
+		border-radius: 10px 10px;
+		width: 25rem;
+		margin-bottom: 3rem;
+		@include mobile {
+			width: 23rem;
+		}
+	}
 }
 
 select {
@@ -14,4 +26,5 @@ select {
 	outline: none;
 	font-size: 20px;
 	align-self: center;
+	justify-content: center;
 }

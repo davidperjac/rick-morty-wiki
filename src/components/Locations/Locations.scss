@@ -1,0 +1,14 @@
+@import '../../globals.scss';
+
+.info {
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+	border: 3px solid $fourthColor;
+	border-radius: 10px 10px;
+	width: 25rem;
+	margin-bottom: 3rem;
+	@include mobile {
+		width: 23rem;
+	}
+}

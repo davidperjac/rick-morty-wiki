@@ -26,6 +26,7 @@ export function useData(url) {
 				setInfo(info.info);
 				setData(info.results);
 			} else {
+				console.log(info);
 				setData(info);
 			}
 			window.scrollTo({ behavior: 'smooth', top: '0px' });
