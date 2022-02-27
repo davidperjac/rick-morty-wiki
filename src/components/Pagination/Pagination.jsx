@@ -2,8 +2,6 @@ import './Pagination.scss';
 import { useContext } from 'react';
 import { InfoContext, SelectContext } from '../../context/context';
 
-//characters : 826
-
 export const Pagination = ({ pageLimit }) => {
 	const page = useContext(SelectContext);
 	const currentPage = page.state.page;

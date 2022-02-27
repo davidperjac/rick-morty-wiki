@@ -3,7 +3,6 @@ import { SelectContext, FilterContext, InfoContext } from '../context/context';
 
 export function useData(url) {
 	const [data, setData] = useState([]);
-	const [loading, setLoading] = useState(true);
 
 	const pageCtx = useContext(SelectContext);
 	const page = pageCtx.state.page;
@@ -29,11 +28,10 @@ export function useData(url) {
 			} else {
 				setData(info);
 			}
-			setLoading(false);
 			window.scrollTo({ behavior: 'smooth', top: '0px' });
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[url, page, filter]
 	);
-	return [data, loading];
+	return [data];
 }
