@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from 'react';
+import './Locations.scss';
+import { useContext, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
-import './Locations.scss';
-
+import { useCharacters } from '../../hooks/useCharacters';
 import { useData } from '../../hooks/useData';
 import { Select } from '../Select/Select';
 
@@ -18,18 +18,7 @@ export const Locations = () => {
 
 	const [location] = useData('https://rickandmortyapi.com/api/location/' + id);
 
-	useEffect(() => {
-		(async function () {
-			if (location.residents) {
-				let a = await Promise.all(
-					location.residents.map((x) => {
-						return fetch(x).then((res) => res.json());
-					})
-				);
-				setResidents(a);
-			}
-		})();
-	}, [location]);
+	useCharacters(location, setResidents);
 
 	const darkStyles = {
 		color: darkMode ? '#2eb086' : '#313552',

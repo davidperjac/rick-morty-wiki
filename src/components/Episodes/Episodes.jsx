@@ -1,12 +1,13 @@
 import './Episodes.scss';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ThemeContext } from '../../context/context';
 import { Character } from '../Character/Character';
 import { SelectContext } from '../../context/context';
 
 import { useData } from '../../hooks/useData';
 import { Select } from '../Select/Select';
+import { useCharacters } from '../../hooks/useCharacters';
 
 export const Episodes = () => {
 	const [characters, setCharacters] = useState([]);
@@ -19,18 +20,7 @@ export const Episodes = () => {
 
 	const [episode] = useData('https://rickandmortyapi.com/api/episode/' + id);
 
-	useEffect(() => {
-		(async function () {
-			if (episode.characters) {
-				let a = await Promise.all(
-					episode.characters.map(async (x) => {
-						return fetch(x).then((res) => res.json());
-					})
-				);
-				setCharacters(a);
-			}
-		})();
-	}, [episode]);
+	useCharacters(episode, setCharacters);
 
 	const darkStyles = {
 		color: darkMode ? '#2eb086' : '#313552',
