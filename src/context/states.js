@@ -1,6 +1,5 @@
 export const INITIAL_THEME = {
-	//darkMode: new Date().getHours() > 18 || new Date().getHours() < 6,
-	darkMode: false,
+	darkMode: new Date().getHours() > 18 || new Date().getHours() < 6,
 };
 
 export const INITIAL_FILTER = {

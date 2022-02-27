@@ -14,7 +14,7 @@ export const SearchBar = () => {
 	const theme = useContext(ThemeContext);
 	const darkMode = theme.state.darkMode;
 
-	const searchInput = useRef(null);
+	const searchInput = useRef(filterCtx.state.value);
 
 	const darkStyles = {
 		border: `2px solid  ${darkMode ? '#2eb086' : '#313552'}`,
