@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+<br/>
+<p align="center">
+  <a href="https://github.com/davidperjac/rick-morty-wiki">
+    <img src="public/resources/logo.png" alt="Logo" width="500" height="150">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">Rick and Morty Wiki</h3>
 
-## Available Scripts
+  <p align="center">
+    Explore the bizarre and hilarious world of Rick and Morty like never before
+    <br/>
+    <br/>
+    <a href="https://davidperjac.github.io/rick-morty-wiki">View Demo</a>
+  </p>
+</p>
 
-In the project directory, you can run:
+![Contributors](https://img.shields.io/github/contributors/davidperjac/rick-morty-wiki?color=dark-green) ![Issues](https://img.shields.io/github/issues/davidperjac/rick-morty-wiki) ![License](https://img.shields.io/github/license/davidperjac/rick-morty-wiki)
 
-### `npm start`
+## Table Of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Authors](#authors)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+This is a comprehensive Rick and Morty wiki built using React. The wiki serves as a hub for fans of the show, providing in-depth information on characters, episodes, locations from the multiverse.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The wiki features a clean and intuitive user interface that allows users to easily navigate through the vast amount of information available.
 
-### `npm run build`
+The main goal of this project was to practice:
+- Consuming an API service
+- Custom Hooks
+- Dark Mode styles
+- Route navigation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This application was built with:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [React](https://es.react.dev/)
+* [SCSS](https://sass-lang.com/)
+* [Rick and Morty API](https://rickandmortyapi.com/)
+* [React Router DOM](https://reactrouter.com/en/main)
 
-### `npm run eject`
+## Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To use this application, simply clone the repository, install the dependencies, and start the development server. Here are the steps:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repo
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+git clone https://github.com/davidperjac/rick-morty-wiki.git
+```
 
-## Learn More
+2. Install NPM packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Start the development server
 
-### Code Splitting
+```
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. Open your browser on `http://localhost:3000`
 
-### Analyzing the Bundle Size
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Comprehensive database of characters, locations and episodes from the show
 
-### Making a Progressive Web App
+![Screen Shot](public/resources/episodes.png)
+![Screen Shot](public/resources/locations.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Intuitive search and filtering functionality
 
-### Advanced Configuration
+![Screen Shot](public/resources/light.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Dark Mode design
 
-### Deployment
+![Screen Shot](public/resources/dark.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Authors
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **David Perez** - *FullStack Developer* - [David Perez](https://github.com/davidperjac) - *App*
